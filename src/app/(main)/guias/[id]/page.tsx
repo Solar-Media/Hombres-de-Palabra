@@ -7,7 +7,7 @@ const guiasData: Record<string, {
   id: string; semana_numero: number; titulo: string; capitulos: string;
   descripcion: string; libro_referencia: string; paginas_referencia: string;
   temas_clave: string[]; preguntas_destacadas: string[];
-  versiculos_clave: string[]; pdf_url: string;
+  versiculos_clave: string[]; pdf_url: string; biblia_url: string;
 }> = {
   "lucas-1": {
     id: "lucas-1", semana_numero: 1, titulo: "Nada es imposible para Dios",
@@ -27,6 +27,7 @@ const guiasData: Record<string, {
     ],
     versiculos_clave: ["Lucas 1:37", "Lucas 1:67-79", "Isaías 7:14", "Isaías 9:6", "Romanos 5:12-15", "1 Pedro 1:18-19"],
     pdf_url: "/guias/lucas-semana-1.pdf",
+    biblia_url: "https://www.biblegateway.com/passage/?search=Lucas+1&version=RVR1960",
   },
   "lucas-2": {
     id: "lucas-2", semana_numero: 2, titulo: "¿Dónde está el fruto del arrepentimiento?",
@@ -46,6 +47,7 @@ const guiasData: Record<string, {
     ],
     versiculos_clave: ["Lucas 2:1-20", "Lucas 2:21-40", "Lucas 2:41-52", "Lucas 3:3-18", "Mateo 2:1-23", "Malaquías 4:6", "Lucas 1:15-17"],
     pdf_url: "/guias/lucas-semana-2.pdf",
+    biblia_url: "https://www.biblegateway.com/passage/?search=Lucas+2-3&version=RVR1960",
   },
   "lucas-3": {
     id: "lucas-3", semana_numero: 3, titulo: "Seguir a Cristo — un asunto de obediencia, no de capacidad",
@@ -65,6 +67,7 @@ const guiasData: Record<string, {
     ],
     versiculos_clave: ["Lucas 4:1-13", "Lucas 4:18-19", "Lucas 4:31-44", "Lucas 5:1-16", "Lucas 5:17-39", "Mateo 4:1-11"],
     pdf_url: "/guias/lucas-semana-3.pdf",
+    biblia_url: "https://www.biblegateway.com/passage/?search=Lucas+4-5&version=RVR1960",
   },
   "lucas-4": {
     id: "lucas-4", semana_numero: 4, titulo: "El amor del que ha sido perdonado",
@@ -83,6 +86,7 @@ const guiasData: Record<string, {
     ],
     versiculos_clave: ["Lucas 6:1-11", "Lucas 6:20-49", "Lucas 6:43-45", "Lucas 7:1-35", "Lucas 7:36-50", "Mateo 5:17-19", "Éxodo 20:8-11"],
     pdf_url: "/guias/lucas-semana-4.pdf",
+    biblia_url: "https://www.biblegateway.com/passage/?search=Lucas+6-7&version=RVR1960",
   },
   "lucas-5": {
     id: "lucas-5", semana_numero: 5, titulo: "Sin mirar atrás",
@@ -102,6 +106,7 @@ const guiasData: Record<string, {
     ],
     versiculos_clave: ["Lucas 8:1-18", "Lucas 8:22-39", "Lucas 8:40-56", "Lucas 9:1-17", "Lucas 9:18-36", "Lucas 9:57-62", "Marcos 4:13-20"],
     pdf_url: "/guias/lucas-semana-5.pdf",
+    biblia_url: "https://www.biblegateway.com/passage/?search=Lucas+8-9&version=RVR1960",
   },
   "lucas-6": {
     id: "lucas-6", semana_numero: 6, titulo: "Permanece a Sus pies",
@@ -121,6 +126,7 @@ const guiasData: Record<string, {
     ],
     versiculos_clave: ["Lucas 10:1-16", "Lucas 10:25-37", "Lucas 10:38-42", "Lucas 11:1-13", "Lucas 11:14-28", "Juan 8:31-32", "Juan 15:7"],
     pdf_url: "/guias/lucas-semana-6.pdf",
+    biblia_url: "https://www.biblegateway.com/passage/?search=Lucas+10-11&version=RVR1960",
   },
 };
 
@@ -171,21 +177,39 @@ export default async function GuiaDetailPage({ params }: PageProps) {
       </div>
 
       {/* Download PDF */}
-      <a
-        href={guia.pdf_url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex items-center gap-3 bg-primary/20 border border-border-accent/40 rounded-xl p-4 mb-6 hover:bg-primary/30 transition-colors group"
-      >
-        <div className="w-10 h-10 rounded-lg bg-primary/30 flex items-center justify-center group-hover:bg-primary/40">
-          <Download className="w-5 h-5 text-accent" />
-        </div>
-        <div className="flex-1">
-          <p className="text-text-primary text-sm font-medium">Descargar Guía en PDF</p>
-          <p className="text-text-secondary text-xs">Guía completa para imprimir o estudiar offline</p>
-        </div>
-        <ExternalLink className="w-4 h-4 text-accent" />
-      </a>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+        <a
+          href={guia.pdf_url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-3 bg-primary/20 border border-border-accent/40 rounded-xl p-4 hover:bg-primary/30 transition-colors group"
+        >
+          <div className="w-10 h-10 rounded-lg bg-primary/30 flex items-center justify-center group-hover:bg-primary/40">
+            <Download className="w-5 h-5 text-accent" />
+          </div>
+          <div className="flex-1 min-w-0">
+            <p className="text-text-primary text-sm font-medium">Descargar Guía en PDF</p>
+            <p className="text-text-secondary text-xs">Guía completa para imprimir</p>
+          </div>
+          <ExternalLink className="w-4 h-4 text-accent flex-shrink-0" />
+        </a>
+
+        <a
+          href={guia.biblia_url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-3 bg-accent-gold/10 border border-accent-gold/30 rounded-xl p-4 hover:bg-accent-gold/20 transition-colors group"
+        >
+          <div className="w-10 h-10 rounded-lg bg-accent-gold/20 flex items-center justify-center group-hover:bg-accent-gold/30">
+            <BookOpen className="w-5 h-5 text-accent-gold" />
+          </div>
+          <div className="flex-1 min-w-0">
+            <p className="text-text-primary text-sm font-medium">Leer {guia.capitulos}</p>
+            <p className="text-text-secondary text-xs">Reina Valera 1960</p>
+          </div>
+          <ExternalLink className="w-4 h-4 text-accent-gold flex-shrink-0" />
+        </a>
+      </div>
 
       {/* Key Topics */}
       <div className="bg-bg-card border border-border rounded-xl p-5 md:p-6 mb-4">
