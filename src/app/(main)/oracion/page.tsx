@@ -7,10 +7,10 @@ const peticionesDemo = [
   {
     id: "1",
     contenido: "Por favor oren por mi familia. Estamos pasando por un momento difícil económicamente y necesitamos la provisión de Dios.",
-    es_anonima: false,
+    es_anonima: true,
     estado: "activa" as const,
     created_at: "2026-02-25T10:00:00Z",
-    autor: { nombre: "Carlos", apellido: "M." },
+    autor: null,
   },
   {
     id: "2",
@@ -23,15 +23,16 @@ const peticionesDemo = [
   {
     id: "3",
     contenido: "Oren por mi hijo que está alejado del Señor. Que Dios toque su corazón y lo traiga de regreso.",
-    es_anonima: false,
+    es_anonima: true,
     estado: "activa" as const,
     created_at: "2026-02-27T08:00:00Z",
-    autor: { nombre: "Miguel", apellido: "R." },
+    autor: null,
   },
 ];
 
 export default function OracionPage() {
   const [showForm, setShowForm] = useState(false);
+  const [esAnonima, setEsAnonima] = useState(false);
 
   return (
     <div>
@@ -66,7 +67,23 @@ export default function OracionPage() {
             Nueva Petición de Oración
           </h2>
           <form className="space-y-4">
+            {/* Name field - shown when not anonymous */}
+            {!esAnonima && (
+              <div>
+                <label className="block text-text-secondary text-xs font-medium mb-1.5">
+                  Tu Nombre
+                </label>
+                <input
+                  type="text"
+                  placeholder="Escribe tu nombre aquí..."
+                  className="w-full bg-bg-elevated border border-border rounded-lg px-4 py-2.5 text-sm text-text-primary placeholder-text-secondary/50 focus:outline-none focus:border-accent"
+                />
+              </div>
+            )}
             <div>
+              <label className="block text-text-secondary text-xs font-medium mb-1.5">
+                Tu Petición
+              </label>
               <textarea
                 placeholder="Escribe tu petición de oración aquí..."
                 rows={4}
@@ -77,6 +94,8 @@ export default function OracionPage() {
               <label className="flex items-center gap-2 text-sm text-text-secondary cursor-pointer">
                 <input
                   type="checkbox"
+                  checked={esAnonima}
+                  onChange={(e) => setEsAnonima(e.target.checked)}
                   className="w-4 h-4 rounded border-border accent-primary"
                 />
                 Publicar como anónima
@@ -124,9 +143,7 @@ export default function OracionPage() {
                   <User className="w-3.5 h-3.5 text-accent" />
                 </div>
                 <span className="text-text-primary text-sm font-medium">
-                  {peticion.es_anonima
-                    ? "Anónimo"
-                    : `${peticion.autor?.nombre} ${peticion.autor?.apellido}`}
+                  Anónimo
                 </span>
               </div>
               <div className="flex items-center gap-1 text-text-secondary text-[10px]">
