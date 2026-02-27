@@ -4,7 +4,6 @@ import {
   BookOpen,
   FileText,
   Heart,
-  MessageCircle,
   Calendar,
   Megaphone,
   Sun,
@@ -58,16 +57,12 @@ const features = [
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-bg-primary">
+    <div>
       {/* Hero Section */}
-      <section className="relative overflow-hidden">
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/20 via-bg-primary to-bg-primary" />
-        
-        {/* Ember/fire effect at top */}
+      <section className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary/15 via-bg-card to-bg-card border border-border mb-8">
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent" />
         
-        <div className="relative max-w-4xl mx-auto px-4 pt-12 pb-8 text-center">
+        <div className="relative px-6 py-10 md:py-14 text-center">
           {/* Logo */}
           <div className="flex justify-center mb-6">
             <Image
@@ -75,7 +70,7 @@ export default function HomePage() {
               alt="Hombres de Palabra"
               width={400}
               height={200}
-              className="w-auto h-24 md:h-32"
+              className="w-auto h-20 md:h-28"
               priority
             />
           </div>
@@ -84,7 +79,7 @@ export default function HomePage() {
           <p className="font-[family-name:var(--font-display)] text-accent uppercase tracking-wider text-sm md:text-base font-semibold italic mb-2">
             &ldquo;Renovando nuestra mente a través de la Palabra de Dios.&rdquo;
           </p>
-          <p className="text-accent-gold font-[family-name:var(--font-heading)] text-sm tracking-widest mb-8">
+          <p className="text-accent-gold font-[family-name:var(--font-heading)] text-sm tracking-widest mb-6">
             ROMANOS 12:2
           </p>
 
@@ -98,12 +93,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Divider */}
-      <div className="max-w-xs mx-auto border-t border-border-accent/50 mb-8" />
-
       {/* Feature Grid */}
-      <section className="max-w-4xl mx-auto px-4 pb-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <section>
+        <h2 className="font-[family-name:var(--font-heading)] text-lg font-bold mb-4 tracking-wide">
+          Recursos del Ministerio
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {features.map((feature) => {
             const Icon = feature.icon;
             return (
@@ -132,7 +127,7 @@ export default function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-border py-6 text-center">
+      <footer className="mt-10 pt-6 border-t border-border text-center">
         <p className="text-text-secondary text-xs">
           Hombres de Palabra &bull; Ministerio de Hombres
         </p>
@@ -161,6 +156,6 @@ export default function HomePage() {
           </a>
         </div>
       </footer>
-    </main>
+    </div>
   );
 }
