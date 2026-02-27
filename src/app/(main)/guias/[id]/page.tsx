@@ -1,59 +1,141 @@
-import { BookOpen, Book, ArrowLeft, MessageCircle } from "lucide-react";
+import { BookOpen, Book, ArrowLeft, MessageCircle, Download, ExternalLink } from "lucide-react";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
-// Demo data — will be replaced with Supabase query
-const guiaDemo = {
-  id: "1",
-  titulo: "La Fe que Transforma",
-  descripcion: "Estudio sobre cómo la fe genuina produce cambios reales en nuestra vida diaria.",
-  libro_referencia: "Una Vida Más Que Maravillosa",
-  paginas_referencia: "pp. 23-45",
-  fecha_estudio: "2026-03-01",
-  semana_numero: 1,
-  serie_nombre: "Una Vida Más Que Maravillosa",
-  contenido: `## Introducción
-
-La fe no es simplemente creer algo en nuestra mente — es una convicción profunda que transforma cada área de nuestra vida. En este estudio, exploraremos lo que significa vivir por fe según las Escrituras.
-
-## Lectura Bíblica
-
-**Hebreos 11:1-6** — "Es, pues, la fe la certeza de lo que se espera, la convicción de lo que no se ve."
-
-## Puntos Principales
-
-### 1. La Fe es Certeza
-La fe bíblica no es un salto al vacío. Es una confianza fundamentada en el carácter de Dios y en Sus promesas.
-
-### 2. La Fe Produce Acción
-Santiago 2:17 nos dice que "la fe, si no tiene obras, es muerta en sí misma." La fe genuina siempre se manifiesta en acciones.
-
-### 3. La Fe Transforma Nuestra Perspectiva
-Cuando caminamos por fe, vemos las circunstancias a través del lente de las promesas de Dios, no de nuestras limitaciones.
-
-## Aplicación Práctica
-
-- ¿En qué área de tu vida necesitas ejercitar más fe?
-- ¿Cómo puedes demostrar tu fe con acciones esta semana?
-- ¿Qué promesa de Dios necesitas recordar en este momento?`,
-  notas: {
-    titulo: "La Fe que Transforma — Notas del Estudio",
-    orador: "Pastor Erick Zaldaña",
-    versiculos_clave: ["Hebreos 11:1-6", "Santiago 2:17", "Romanos 10:17"],
-    puntos_principales: [
-      "La fe es certeza, no suposición",
-      "La fe sin obras es muerta",
-      "La fe viene por el oír la Palabra de Dios",
+// Same data — in production this would come from Supabase
+const guiasData: Record<string, {
+  id: string; semana_numero: number; titulo: string; capitulos: string;
+  descripcion: string; libro_referencia: string; paginas_referencia: string;
+  temas_clave: string[]; preguntas_destacadas: string[];
+  versiculos_clave: string[]; pdf_url: string;
+}> = {
+  "lucas-1": {
+    id: "lucas-1", semana_numero: 1, titulo: "Nada es imposible para Dios",
+    capitulos: "Lucas 1",
+    descripcion: "En este primer estudio nos sumergimos en Lucas 1, donde descubrimos el anuncio del nacimiento de Juan el Bautista y de Jesús.",
+    libro_referencia: "El Llamado a Seguir a Jesús, Kay Arthur",
+    paginas_referencia: "pp. 17–21",
+    temas_clave: ["El propósito del Evangelio de Lucas", "Zacarías, Elisabet y María — ejemplos de fe", "El Espíritu Santo en Lucas 1", "El nacimiento virginal y su importancia", "Dios cumple Sus promesas"],
+    preguntas_destacadas: [
+      "¿Para quién fue escrito este evangelio y por qué fue escrito?",
+      "¿Qué aprendes acerca de Zacarías, Elisabet y María según el texto?",
+      "¿Qué has aprendido en Lucas 1 acerca de Dios y de Su manera de actuar?",
+      "¿Qué aprendiste acerca de Jesús en este capítulo? Si te negaras a ti mismo, tomaras tu cruz y lo siguieras, ¿a qué persona estarías siguiendo?",
+      "¿Qué has aprendido acerca del Espíritu Santo?",
+      "¿Qué enseña este capítulo en lo referente al nacimiento virginal? ¿Es importante creer esto?",
+      "¿Qué dicen Isaías 7:14; 9:6, Romanos 5:12-15 y 1 Pedro 1:18-19 acerca del nacimiento de Jesús y Su misión?",
     ],
+    versiculos_clave: ["Lucas 1:37", "Lucas 1:67-79", "Isaías 7:14", "Isaías 9:6", "Romanos 5:12-15", "1 Pedro 1:18-19"],
+    pdf_url: "/guias/lucas-semana-1.pdf",
   },
-  preguntas: [
-    { tipo: "personal", pregunta: "¿Cuál es el área de tu vida donde más te cuesta confiar en Dios?" },
-    { tipo: "personal", pregunta: "¿Qué promesa bíblica ha sostenido tu fe recientemente?" },
-    { tipo: "grupal", pregunta: "¿Cómo podemos como grupo animarnos mutuamente a caminar por fe?" },
-    { tipo: "grupal", pregunta: "¿Qué ejemplos de fe en la Biblia les inspiran más y por qué?" },
-  ],
+  "lucas-2": {
+    id: "lucas-2", semana_numero: 2, titulo: "¿Dónde está el fruto del arrepentimiento?",
+    capitulos: "Lucas 2–3",
+    descripcion: "El nacimiento de Jesús, Su presentación en el templo, y el ministerio de Juan el Bautista. El verdadero arrepentimiento y sus frutos.",
+    libro_referencia: "El Llamado a Seguir a Jesús, Kay Arthur",
+    paginas_referencia: "pp. 23–27",
+    temas_clave: ["El nacimiento y la niñez de Jesús", "Simeón y Ana — esperando al Mesías", "El ministerio de Juan el Bautista", "El fruto del arrepentimiento", "El bautismo de Jesús"],
+    preguntas_destacadas: [
+      "Anota los eventos específicos de Lucas 2:1-20, 2:21-40, 2:41-52, 3:1-20 y 3:20-22.",
+      "¿Qué aprendes acerca de Simeón y Ana en Lucas 2:21-40?",
+      "¿Por qué se encontraban María, José y Jesús en Jerusalén? (Lee Levítico 12)",
+      "¿Qué ejemplo ves en Jesús que te gustaría seguir?",
+      "¿Cuál era el mensaje de Juan? ¿Cuál era su propósito? ¿Qué deberían hacer quienes le creían?",
+      "¿Cumplió Juan su ministerio? ¿Qué le costó?",
+      "Según Juan, ¿quién era Jesús y qué vino a hacer?",
+    ],
+    versiculos_clave: ["Lucas 2:1-20", "Lucas 2:21-40", "Lucas 2:41-52", "Lucas 3:3-18", "Mateo 2:1-23", "Malaquías 4:6", "Lucas 1:15-17"],
+    pdf_url: "/guias/lucas-semana-2.pdf",
+  },
+  "lucas-3": {
+    id: "lucas-3", semana_numero: 3, titulo: "Seguir a Cristo — un asunto de obediencia, no de capacidad",
+    capitulos: "Lucas 4–5",
+    descripcion: "Jesús inicia Su ministerio público, enfrenta la tentación en el desierto, enseña con autoridad y llama a Sus primeros discípulos.",
+    libro_referencia: "El Llamado a Seguir a Jesús, Kay Arthur",
+    paginas_referencia: "pp. 29–32",
+    temas_clave: ["La tentación de Jesús en el desierto", "El poder de conocer la Palabra de Dios", "El llamado de Jesús (Lucas 4:18-19)", "Los primeros discípulos", "La oposición de los líderes religiosos"],
+    preguntas_destacadas: [
+      "¿Quiénes son los protagonistas en Lucas 4:1-13? ¿Cómo enfrenta Jesús cada tentación?",
+      "¿Qué aprendes sobre la importancia de conocer la Palabra de Dios?",
+      "Según Lucas 4:18-19, ¿cuál era el llamado de Jesús?",
+      "¿Qué observas que te muestra cómo Jesús pensaba cumplir con su llamamiento? ¿Lo haría solo?",
+      "¿Cómo respondieron los líderes religiosos al propósito de Dios para Jesús?",
+      "Si sigues a Jesús, ¿piensas que podrías experimentar cosas similares?",
+      "¿Qué observaste acerca de quiénes seguían a Jesús? ¿Qué clase de personas eran?",
+    ],
+    versiculos_clave: ["Lucas 4:1-13", "Lucas 4:18-19", "Lucas 4:31-44", "Lucas 5:1-16", "Lucas 5:17-39", "Mateo 4:1-11"],
+    pdf_url: "/guias/lucas-semana-3.pdf",
+  },
+  "lucas-4": {
+    id: "lucas-4", semana_numero: 4, titulo: "El amor del que ha sido perdonado",
+    capitulos: "Lucas 6–7",
+    descripcion: "Jesús demuestra Su amor y poder al acercarse a las personas, escucharlas y transformar sus vidas.",
+    libro_referencia: "El Llamado a Seguir a Jesús, Kay Arthur",
+    paginas_referencia: "pp. 33–36",
+    temas_clave: ["Jesús y el día de reposo", "Las bienaventuranzas en Lucas", "Un árbol se conoce por su fruto", "Juan el Bautista y sus dudas", "El amor del que ha sido perdonado"],
+    preguntas_destacadas: [
+      "¿Jesús o sus discípulos habían quebrantado el día de reposo? Explica tu respuesta.",
+      "Si vamos a seguir a Jesús, ¿cómo deberíamos responder a lo que Él enseña en Lucas 6:20-49?",
+      "¿Quiénes son bienaventurados y por qué? ¿Quiénes sufrirán el ¡ay! y por qué?",
+      "¿Qué revela nuestro fruto acerca de nosotros? ¿Qué crees que es el 'fruto'?",
+      "¿Cómo respondió Jesús a Juan cuando comenzó a dudar de si Jesús era realmente el Mesías?",
+      "¿Qué aprendiste acerca de Jesucristo? ¿A quiénes encontró y cómo los trató?",
+    ],
+    versiculos_clave: ["Lucas 6:1-11", "Lucas 6:20-49", "Lucas 6:43-45", "Lucas 7:1-35", "Lucas 7:36-50", "Mateo 5:17-19", "Éxodo 20:8-11"],
+    pdf_url: "/guias/lucas-semana-4.pdf",
+  },
+  "lucas-5": {
+    id: "lucas-5", semana_numero: 5, titulo: "Sin mirar atrás",
+    capitulos: "Lucas 8–9",
+    descripcion: "Jesús nos enseña qué significa ser buena tierra para Su Palabra y qué implica seguirlo de verdad.",
+    libro_referencia: "El Llamado a Seguir a Jesús, Kay Arthur",
+    paginas_referencia: "pp. 37–40",
+    temas_clave: ["La parábola del sembrador — cuatro tipos de terreno", "Jesús calma la tempestad", "La fe de Jairo y la mujer con flujo de sangre", "Alimentación de los cinco mil", "El costo de seguir a Cristo"],
+    preguntas_destacadas: [
+      "¿Cómo se relaciona la parábola del sembrador con la Palabra de Dios?",
+      "¿Cómo es el terreno de tu corazón? ¿Cómo lo sabes?",
+      "¿Por qué Jesús censura a los discípulos en la tempestad? ¿Fue justo?",
+      "¿Cómo se desarrolla el relato de Jairo paso a paso y cómo responde Jesús en cada momento?",
+      "¿Qué aprendes acerca de Jesucristo en Lucas 9:18-36?",
+      "¿Cuál es el precio de ser seguidores de Jesucristo?",
+      "¿Qué significa 'niéguese a sí mismo, tome su cruz cada día y sígame'?",
+    ],
+    versiculos_clave: ["Lucas 8:1-18", "Lucas 8:22-39", "Lucas 8:40-56", "Lucas 9:1-17", "Lucas 9:18-36", "Lucas 9:57-62", "Marcos 4:13-20"],
+    pdf_url: "/guias/lucas-semana-5.pdf",
+  },
+  "lucas-6": {
+    id: "lucas-6", semana_numero: 6, titulo: "Permanece a Sus pies",
+    capitulos: "Lucas 10 – 11:36",
+    descripcion: "Jesús nos enseña a vivir el reino de Dios con obediencia práctica: sirviendo con compasión, escuchando Su Palabra y perseverando en la oración.",
+    libro_referencia: "El Llamado a Seguir a Jesús, Kay Arthur",
+    paginas_referencia: "pp. 41–44",
+    temas_clave: ["El envío de los setenta discípulos", "La parábola del buen samaritano", "María y Marta — la única cosa necesaria", "La enseñanza de Jesús sobre la oración", "Jesús y el poder sobre los demonios"],
+    preguntas_destacadas: [
+      "¿Cuántos discípulos envió Jesús y cuál es la enseñanza principal de Lucas 10:1-16?",
+      "¿Qué estaba buscando el intérprete de la ley? ¿Cuál es la lección principal del buen samaritano?",
+      "¿Qué aprendiste de María y Marta? ¿Cuál es la única cosa realmente necesaria?",
+      "¿Con cuál de estas dos mujeres te identificas más y por qué?",
+      "¿Qué aprendes sobre la oración en Lucas 11:1-13?",
+      "¿Qué relación hay entre la oración y la Palabra de Dios? (Lee Juan 15:7 y 15:16)",
+      "Según Lucas 11:29-32, ¿qué pide 'esta generación' y qué rechaza?",
+    ],
+    versiculos_clave: ["Lucas 10:1-16", "Lucas 10:25-37", "Lucas 10:38-42", "Lucas 11:1-13", "Lucas 11:14-28", "Juan 8:31-32", "Juan 15:7"],
+    pdf_url: "/guias/lucas-semana-6.pdf",
+  },
 };
 
-export default function GuiaDetailPage() {
+interface PageProps {
+  params: Promise<{ id: string }>;
+}
+
+export default async function GuiaDetailPage({ params }: PageProps) {
+  const { id } = await params;
+  const guia = guiasData[id];
+
+  if (!guia) {
+    notFound();
+  }
+
   return (
     <div className="max-w-3xl mx-auto">
       {/* Back Link */}
@@ -69,149 +151,119 @@ export default function GuiaDetailPage() {
       <div className="mb-6">
         <div className="flex items-center gap-2 mb-2">
           <span className="text-accent font-[family-name:var(--font-display)] text-xs font-semibold uppercase">
-            Semana {guiaDemo.semana_numero}
+            Semana {guia.semana_numero}
           </span>
           <span className="text-border text-xs">&bull;</span>
           <span className="text-text-secondary text-xs">
-            {new Date(guiaDemo.fecha_estudio).toLocaleDateString("es-MX", {
-              day: "numeric",
-              month: "long",
-              year: "numeric",
-            })}
+            {guia.capitulos}
           </span>
         </div>
         <h1 className="font-[family-name:var(--font-heading)] text-2xl md:text-3xl font-bold mb-2">
-          {guiaDemo.titulo}
+          {guia.titulo}
         </h1>
-        <p className="text-text-secondary text-sm">{guiaDemo.descripcion}</p>
-        <div className="flex items-center gap-2 mt-3">
+        <p className="text-text-secondary text-sm">{guia.descripcion}</p>
+        <div className="flex items-center gap-2 mt-3 flex-wrap">
           <span className="inline-flex items-center gap-1.5 bg-primary/20 border border-border-accent/30 px-3 py-1 rounded-full text-xs text-accent-gold">
             <Book className="w-3.5 h-3.5" />
-            {guiaDemo.libro_referencia} — {guiaDemo.paginas_referencia}
+            {guia.libro_referencia} — {guia.paginas_referencia}
           </span>
         </div>
       </div>
 
-      {/* Content */}
-      <article className="bg-bg-card border border-border rounded-xl p-5 md:p-8 mb-6 prose-invert">
-        <div className="text-text-primary text-sm leading-relaxed whitespace-pre-wrap space-y-4">
-          {guiaDemo.contenido.split('\n\n').map((paragraph, i) => {
-            if (paragraph.startsWith('## ')) {
-              return (
-                <h2 key={i} className="font-[family-name:var(--font-heading)] text-lg font-bold text-accent mt-6 mb-2">
-                  {paragraph.replace('## ', '')}
-                </h2>
-              );
-            }
-            if (paragraph.startsWith('### ')) {
-              return (
-                <h3 key={i} className="font-[family-name:var(--font-heading)] text-base font-semibold text-accent-gold mt-4 mb-1">
-                  {paragraph.replace('### ', '')}
-                </h3>
-              );
-            }
-            if (paragraph.startsWith('- ')) {
-              return (
-                <ul key={i} className="list-disc list-inside space-y-1 text-text-secondary">
-                  {paragraph.split('\n').map((line, j) => (
-                    <li key={j}>{line.replace('- ', '')}</li>
-                  ))}
-                </ul>
-              );
-            }
-            return (
-              <p key={i} className="text-text-secondary">
-                {paragraph.startsWith('**') ? (
-                  <strong className="text-text-primary">{paragraph.replace(/\*\*/g, '')}</strong>
-                ) : paragraph}
-              </p>
-            );
-          })}
+      {/* Download PDF */}
+      <a
+        href={guia.pdf_url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center gap-3 bg-primary/20 border border-border-accent/40 rounded-xl p-4 mb-6 hover:bg-primary/30 transition-colors group"
+      >
+        <div className="w-10 h-10 rounded-lg bg-primary/30 flex items-center justify-center group-hover:bg-primary/40">
+          <Download className="w-5 h-5 text-accent" />
         </div>
-      </article>
+        <div className="flex-1">
+          <p className="text-text-primary text-sm font-medium">Descargar Guía en PDF</p>
+          <p className="text-text-secondary text-xs">Guía completa para imprimir o estudiar offline</p>
+        </div>
+        <ExternalLink className="w-4 h-4 text-accent" />
+      </a>
 
-      {/* Sermon Notes */}
-      <div className="bg-bg-card border border-border rounded-xl p-5 md:p-8 mb-6">
+      {/* Key Topics */}
+      <div className="bg-bg-card border border-border rounded-xl p-5 md:p-6 mb-4">
         <div className="flex items-center gap-2 mb-4">
           <BookOpen className="w-5 h-5 text-accent" />
           <h2 className="font-[family-name:var(--font-heading)] text-lg font-bold">
-            Notas del Sermón
+            Temas Principales
           </h2>
         </div>
-        <p className="text-text-secondary text-xs mb-3">
-          Orador: <span className="text-accent">{guiaDemo.notas.orador}</span>
-        </p>
+        <ul className="space-y-2">
+          {guia.temas_clave.map((tema, i) => (
+            <li key={i} className="flex items-start gap-2 text-text-secondary text-sm">
+              <span className="text-accent font-bold mt-0.5">•</span>
+              {tema}
+            </li>
+          ))}
+        </ul>
+      </div>
 
-        {/* Key Verses */}
-        <div className="mb-4">
-          <h3 className="text-xs font-semibold text-accent-gold uppercase tracking-wider mb-2">
-            Versículos Clave
-          </h3>
-          <div className="flex flex-wrap gap-2">
-            {guiaDemo.notas.versiculos_clave.map((v, i) => (
-              <span key={i} className="bg-primary/20 border border-border-accent/30 px-2.5 py-1 rounded-full text-xs text-accent">
-                {v}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* Main Points */}
-        <div>
-          <h3 className="text-xs font-semibold text-accent-gold uppercase tracking-wider mb-2">
-            Puntos Principales
-          </h3>
-          <ul className="space-y-2">
-            {guiaDemo.notas.puntos_principales.map((punto, i) => (
-              <li key={i} className="flex items-start gap-2 text-text-secondary text-sm">
-                <span className="text-accent font-bold mt-0.5">{i + 1}.</span>
-                {punto}
-              </li>
-            ))}
-          </ul>
+      {/* Key Verses */}
+      <div className="bg-bg-card border border-border rounded-xl p-5 md:p-6 mb-4">
+        <h3 className="text-xs font-semibold text-accent-gold uppercase tracking-wider mb-3">
+          Versículos Clave
+        </h3>
+        <div className="flex flex-wrap gap-2">
+          {guia.versiculos_clave.map((v, i) => (
+            <span key={i} className="bg-primary/20 border border-border-accent/30 px-2.5 py-1 rounded-full text-xs text-accent">
+              {v}
+            </span>
+          ))}
         </div>
       </div>
 
       {/* Discussion Questions */}
-      <div className="bg-bg-card border border-border rounded-xl p-5 md:p-8">
+      <div className="bg-bg-card border border-border rounded-xl p-5 md:p-6">
         <div className="flex items-center gap-2 mb-4">
           <MessageCircle className="w-5 h-5 text-accent" />
           <h2 className="font-[family-name:var(--font-heading)] text-lg font-bold">
-            Preguntas de Discusión
+            Preguntas de la Guía
           </h2>
         </div>
-
-        {/* Personal Questions */}
-        <div className="mb-6">
-          <h3 className="text-xs font-semibold text-accent uppercase tracking-wider mb-3">
-            Reflexión Personal
-          </h3>
-          <div className="space-y-3">
-            {guiaDemo.preguntas
-              .filter((p) => p.tipo === "personal")
-              .map((p, i) => (
-                <div key={i} className="bg-bg-elevated border border-border rounded-lg p-3">
-                  <p className="text-text-primary text-sm">{p.pregunta}</p>
-                </div>
-              ))}
-          </div>
+        <p className="text-text-secondary text-xs mb-4">
+          Preguntas destacadas para reflexión personal y discusión en grupo
+        </p>
+        <div className="space-y-3">
+          {guia.preguntas_destacadas.map((pregunta, i) => (
+            <div key={i} className="bg-bg-elevated border border-border rounded-lg p-3">
+              <div className="flex items-start gap-2">
+                <span className="text-accent font-bold text-sm mt-0.5">{i + 1}.</span>
+                <p className="text-text-primary text-sm">{pregunta}</p>
+              </div>
+            </div>
+          ))}
         </div>
+      </div>
 
-        {/* Group Questions */}
-        <div>
-          <h3 className="text-xs font-semibold text-accent-gold uppercase tracking-wider mb-3">
-            Discusión en Grupo
-          </h3>
-          <div className="space-y-3">
-            {guiaDemo.preguntas
-              .filter((p) => p.tipo === "grupal")
-              .map((p, i) => (
-                <div key={i} className="bg-bg-elevated border border-border rounded-lg p-3">
-                  <p className="text-text-primary text-sm">{p.pregunta}</p>
-                </div>
-              ))}
-          </div>
-        </div>
+      {/* Navigation */}
+      <div className="flex justify-between mt-6 pt-4 border-t border-border">
+        {guia.semana_numero > 1 ? (
+          <Link
+            href={`/guias/lucas-${guia.semana_numero - 1}`}
+            className="text-text-secondary hover:text-accent text-sm transition-colors"
+          >
+            ← Semana {guia.semana_numero - 1}
+          </Link>
+        ) : (
+          <div />
+        )}
+        {guia.semana_numero < 6 ? (
+          <Link
+            href={`/guias/lucas-${guia.semana_numero + 1}`}
+            className="text-text-secondary hover:text-accent text-sm transition-colors"
+          >
+            Semana {guia.semana_numero + 1} →
+          </Link>
+        ) : (
+          <div />
+        )}
       </div>
     </div>
   );
