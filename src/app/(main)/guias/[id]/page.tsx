@@ -18,13 +18,9 @@ const guiasData: Record<string, {
     paginas_referencia: "pp. 17–21",
     temas_clave: ["El propósito del Evangelio de Lucas", "Zacarías, Elisabet y María — ejemplos de fe", "El Espíritu Santo en Lucas 1", "El nacimiento virginal y su importancia", "Dios cumple Sus promesas"],
     preguntas_destacadas: [
-      "¿Para quién fue escrito este evangelio y por qué fue escrito?",
-      "¿Qué aprendes acerca de Zacarías, Elisabet y María según el texto?",
-      "¿Qué has aprendido en Lucas 1 acerca de Dios y de Su manera de actuar?",
-      "¿Qué aprendiste acerca de Jesús en este capítulo? Si te negaras a ti mismo, tomaras tu cruz y lo siguieras, ¿a qué persona estarías siguiendo?",
-      "¿Qué has aprendido acerca del Espíritu Santo?",
-      "¿Qué enseña este capítulo en lo referente al nacimiento virginal? ¿Es importante creer esto?",
-      "¿Qué dicen Isaías 7:14; 9:6, Romanos 5:12-15 y 1 Pedro 1:18-19 acerca del nacimiento de Jesús y Su misión?",
+      "¿Hay alguna promesa de Dios o situación en tu vida hoy que te parezca 'imposible'? ¿Cómo puedes aplicar la verdad de que 'nada es imposible para Dios' esta semana?",
+      "Al igual que María respondió con obediencia radical, ¿en qué área específica de tu vida diaria necesitas rendirte a la voluntad de Dios hoy?",
+      "¿De qué manera puedes cultivar una actitud de adoración y gratitud en medio de una espera difícil, tal como lo hicieron Zacarías y Elisabet?",
     ],
     versiculos_clave: ["Lucas 1:37", "Lucas 1:67-79", "Isaías 7:14", "Isaías 9:6", "Romanos 5:12-15", "1 Pedro 1:18-19"],
     pdf_url: "/guias/lucas-semana-1.pdf",
@@ -39,13 +35,9 @@ const guiasData: Record<string, {
     paginas_referencia: "pp. 23–27",
     temas_clave: ["El nacimiento y la niñez de Jesús", "Simeón y Ana — esperando al Mesías", "El ministerio de Juan el Bautista", "El fruto del arrepentimiento", "El bautismo de Jesús"],
     preguntas_destacadas: [
-      "Anota los eventos específicos de Lucas 2:1-20, 2:21-40, 2:41-52, 3:1-20 y 3:20-22.",
-      "¿Qué aprendes acerca de Simeón y Ana en Lucas 2:21-40?",
-      "¿Por qué se encontraban María, José y Jesús en Jerusalén? (Lee Levítico 12)",
-      "¿Qué ejemplo ves en Jesús que te gustaría seguir?",
-      "¿Cuál era el mensaje de Juan? ¿Cuál era su propósito? ¿Qué deberían hacer quienes le creían?",
-      "¿Cumplió Juan su ministerio? ¿Qué le costó?",
-      "Según Juan, ¿quién era Jesús y qué vino a hacer?",
+      "Juan el Bautista llamó a dar 'frutos dignos de arrepentimiento'. ¿Qué acción o cambio práctico necesitas hacer esta semana para reflejar un arrepentimiento genuino en tu trabajo o familia?",
+      "Simeón y Ana esperaron fielmente al Señor por años. ¿Cómo puedes mantenerte enfocado y fiel a Dios en medio de las rutinas diarias?",
+      "Al pensar en el nacimiento humilde de Jesús, ¿de qué forma puedes mostrar humildad y servicio a alguien de tu comunidad esta misma semana?",
     ],
     versiculos_clave: ["Lucas 2:1-20", "Lucas 2:21-40", "Lucas 2:41-52", "Lucas 3:3-18", "Mateo 2:1-23", "Malaquías 4:6", "Lucas 1:15-17"],
     pdf_url: "/guias/lucas-semana-2.pdf",
@@ -60,13 +52,9 @@ const guiasData: Record<string, {
     paginas_referencia: "pp. 29–32",
     temas_clave: ["La tentación de Jesús en el desierto", "El poder de conocer la Palabra de Dios", "El llamado de Jesús (Lucas 4:18-19)", "Los primeros discípulos", "La oposición de los líderes religiosos"],
     preguntas_destacadas: [
-      "¿Quiénes son los protagonistas en Lucas 4:1-13? ¿Cómo enfrenta Jesús cada tentación?",
-      "¿Qué aprendes sobre la importancia de conocer la Palabra de Dios?",
-      "Según Lucas 4:18-19, ¿cuál era el llamado de Jesús?",
-      "¿Qué observas que te muestra cómo Jesús pensaba cumplir con su llamamiento? ¿Lo haría solo?",
-      "¿Cómo respondieron los líderes religiosos al propósito de Dios para Jesús?",
-      "Si sigues a Jesús, ¿piensas que podrías experimentar cosas similares?",
-      "¿Qué observaste acerca de quiénes seguían a Jesús? ¿Qué clase de personas eran?",
+      "Jesús venció la tentación usando la Palabra de Dios. ¿Qué versículo puedes memorizar o llevar contigo esta semana para defenderte de tu tentación más frecuente?",
+      "Los primeros discípulos dejaron sus redes para seguir a Jesús. ¿Hay alguna 'red' (hábito, distracción, preocupación) que debas soltar hoy para seguir a Cristo más de cerca?",
+      "Según el llamado de Jesús a dar libertad y sanidad, ¿a quién en tu entorno podrías acercarte esta semana para compartirle esperanza o ayudarle en su carga?",
     ],
     versiculos_clave: ["Lucas 4:1-13", "Lucas 4:18-19", "Lucas 4:31-44", "Lucas 5:1-16", "Lucas 5:17-39", "Mateo 4:1-11"],
     pdf_url: "/guias/lucas-semana-3.pdf",
@@ -81,12 +69,9 @@ const guiasData: Record<string, {
     paginas_referencia: "pp. 33–36",
     temas_clave: ["Jesús y el día de reposo", "Las bienaventuranzas en Lucas", "Un árbol se conoce por su fruto", "Juan el Bautista y sus dudas", "El amor del que ha sido perdonado"],
     preguntas_destacadas: [
-      "¿Jesús o sus discípulos habían quebrantado el día de reposo? Explica tu respuesta.",
-      "Si vamos a seguir a Jesús, ¿cómo deberíamos responder a lo que Él enseña en Lucas 6:20-49?",
-      "¿Quiénes son bienaventurados y por qué? ¿Quiénes sufrirán el ¡ay! y por qué?",
-      "¿Qué revela nuestro fruto acerca de nosotros? ¿Qué crees que es el 'fruto'?",
-      "¿Cómo respondió Jesús a Juan cuando comenzó a dudar de si Jesús era realmente el Mesías?",
-      "¿Qué aprendiste acerca de Jesucristo? ¿A quiénes encontró y cómo los trató?",
+      "Jesús enseñó que 'de la abundancia del corazón habla la boca'. Presta atención a tus conversaciones hoy, ¿qué revelan sobre lo que hay en tu corazón?",
+      "Pensando en la mujer que ungió a Jesús por el perdón que recibió, ¿cómo puedes demostrar hoy un amor extravagante y gratitud a Dios de manera práctica?",
+      "Jesús nos llama a amar y perdonar a quienes nos ofenden. ¿Hay alguna persona en tu vida con la que necesites iniciar la reconciliación o extender perdón esta misma semana?",
     ],
     versiculos_clave: ["Lucas 6:1-11", "Lucas 6:20-49", "Lucas 6:43-45", "Lucas 7:1-35", "Lucas 7:36-50", "Mateo 5:17-19", "Éxodo 20:8-11"],
     pdf_url: "/guias/lucas-semana-4.pdf",
@@ -101,13 +86,9 @@ const guiasData: Record<string, {
     paginas_referencia: "pp. 37–40",
     temas_clave: ["La parábola del sembrador — cuatro tipos de terreno", "Jesús calma la tempestad", "La fe de Jairo y la mujer con flujo de sangre", "Alimentación de los cinco mil", "El costo de seguir a Cristo"],
     preguntas_destacadas: [
-      "¿Cómo se relaciona la parábola del sembrador con la Palabra de Dios?",
-      "¿Cómo es el terreno de tu corazón? ¿Cómo lo sabes?",
-      "¿Por qué Jesús censura a los discípulos en la tempestad? ¿Fue justo?",
-      "¿Cómo se desarrolla el relato de Jairo paso a paso y cómo responde Jesús en cada momento?",
-      "¿Qué aprendes acerca de Jesucristo en Lucas 9:18-36?",
-      "¿Cuál es el precio de ser seguidores de Jesucristo?",
-      "¿Qué significa 'niéguese a sí mismo, tome su cruz cada día y sígame'?",
+      "Basado en la parábola del sembrador, ¿qué 'espinos' (afanes, riquezas o placeres) están ahogando tu crecimiento espiritual hoy y qué paso tomarás para removerlos?",
+      "Jesús dijo: 'Niéguese a sí mismo, tome su cruz cada día, y sígame'. ¿Qué significa rendir tus propios deseos en las decisiones que debes tomar hoy?",
+      "Ante las 'tormentas' o crisis inesperadas de la vida diaria, ¿cómo puedes ejercitar tu fe y confiar en el control de Jesús en lugar de ceder al pánico o la ansiedad?",
     ],
     versiculos_clave: ["Lucas 8:1-18", "Lucas 8:22-39", "Lucas 8:40-56", "Lucas 9:1-17", "Lucas 9:18-36", "Lucas 9:57-62", "Marcos 4:13-20"],
     pdf_url: "/guias/lucas-semana-5.pdf",
@@ -122,13 +103,9 @@ const guiasData: Record<string, {
     paginas_referencia: "pp. 41–44",
     temas_clave: ["El envío de los setenta discípulos", "La parábola del buen samaritano", "María y Marta — la única cosa necesaria", "La enseñanza de Jesús sobre la oración", "Jesús y el poder sobre los demonios"],
     preguntas_destacadas: [
-      "¿Cuántos discípulos envió Jesús y cuál es la enseñanza principal de Lucas 10:1-16?",
-      "¿Qué estaba buscando el intérprete de la ley? ¿Cuál es la lección principal del buen samaritano?",
-      "¿Qué aprendiste de María y Marta? ¿Cuál es la única cosa realmente necesaria?",
-      "¿Con cuál de estas dos mujeres te identificas más y por qué?",
-      "¿Qué aprendes sobre la oración en Lucas 11:1-13?",
-      "¿Qué relación hay entre la oración y la Palabra de Dios? (Lee Juan 15:7 y 15:16)",
-      "Según Lucas 11:29-32, ¿qué pide 'esta generación' y qué rechaza?",
+      "Pensando en el Buen Samaritano, ¿quién es el 'prójimo' en tu camino diario (trabajo, comunidad) que tiene una necesidad práctica y cómo puedes ayudarle activamente esta semana?",
+      "Entre el afán de Marta y la adoración de María, ¿cómo puedes asegurarte de apartar tiempo intencional hoy para sentarte a escuchar a Dios, sin que las responsabilidades te abrumen?",
+      "A la luz de la enseñanza de Jesús sobre la oración persistente, ¿por qué situación específica vas a orar con insistencia, fe y constancia durante esta semana?",
     ],
     versiculos_clave: ["Lucas 10:1-16", "Lucas 10:25-37", "Lucas 10:38-42", "Lucas 11:1-13", "Lucas 11:14-28", "Juan 8:31-32", "Juan 15:7"],
     pdf_url: "/guias/lucas-semana-6.pdf",
@@ -277,11 +254,11 @@ export default async function GuiaDetailPage({ params }: PageProps) {
         <div className="flex items-center gap-2 mb-4">
           <MessageCircle className="w-5 h-5 text-accent" />
           <h2 className="font-[family-name:var(--font-heading)] text-lg font-bold">
-            Preguntas de la Guía
+            Preguntas Prácticas
           </h2>
         </div>
         <p className="text-text-secondary text-xs mb-4">
-          Preguntas destacadas para reflexión personal y discusión en grupo
+          Tres preguntas de aplicación práctica para tu día a día
         </p>
         <div className="space-y-3">
           {guia.preguntas_destacadas.map((pregunta, i) => (
