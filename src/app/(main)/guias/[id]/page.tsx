@@ -2,7 +2,7 @@ import { BookOpen, Book, ArrowLeft, MessageCircle, Download, ExternalLink, Headp
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-// Same data — in production this would come from Supabase
+// Datos actualizados con preguntas prácticas y la Semana 7
 const guiasData: Record<string, {
   id: string; semana_numero: number; titulo: string; capitulos: string;
   descripcion: string; libro_referencia: string; paginas_referencia: string;
@@ -112,6 +112,27 @@ const guiasData: Record<string, {
     biblia_url: "https://www.biblegateway.com/passage/?search=Lucas+10-11&version=RVR1960",
     audio_videos: [{ label: "Lucas 10", url: "https://www.youtube.com/watch?v=AF1bY3ck8Ug" }, { label: "Lucas 11", url: "https://www.youtube.com/watch?v=_IUJvaKpcSs" }],
   },
+  "lucas-7": {
+    id: "lucas-7", semana_numero: 7, titulo: "¿En quién confiaremos?",
+    capitulos: "Lucas 11:37 – 13:9",
+    descripcion: "Jesús advierte contra la hipocresía, la codicia y el afán, llamándonos a confiar plenamente en la provisión de Dios y a estar preparados para Su regreso.",
+    libro_referencia: "El Llamado a Seguir a Jesús, Kay Arthur",
+    paginas_referencia: "pp. 45–48",
+    temas_clave: ["La levadura de los fariseos (hipocresía)", "A quién debemos temer de verdad", "La parábola del rico insensato y la codicia", "El antídoto contra el afán y la ansiedad", "Estar preparados para la venida del Señor"],
+    preguntas_destacadas: [
+      "Jesús advirtió sobre la 'levadura de los fariseos', que es la hipocresía. ¿En qué área de tu vida notas una desconexión entre lo que aparentas ser frente a otros y lo que realmente eres en tu corazón?",
+      "A través de la parábola del rico insensato, se nos advierte sobre la codicia. ¿Qué paso práctico puedes dar esta semana para ser más 'rico para con Dios' y menos enfocado en acumular lo material?",
+      "Jesús nos manda a no afanarnos, sino a buscar Su reino. Cuando sientes que la ansiedad por las necesidades diarias te abruma, ¿cómo puedes recordarte a ti mismo el cuidado de Dios de forma práctica?",
+    ],
+    versiculos_clave: ["Lucas 12:4-5", "Lucas 12:15", "Lucas 12:31", "Lucas 12:34", "Lucas 12:40", "Colosenses 3:5"],
+    pdf_url: "/guias/lucas-semana-7.pdf",
+    biblia_url: "https://www.biblegateway.com/passage/?search=Lucas+11%3A37-13%3A9&version=RVR1960",
+    audio_videos: [
+      { label: "Lucas 11", url: "https://www.youtube.com/watch?v=_IUJvaKpcSs" }, 
+      { label: "Lucas 12", url: "https://www.youtube.com/watch?v=uT_ZBzWGwI0" },
+      { label: "Lucas 13", url: "https://www.youtube.com/watch?v=hIDVX7plWw0" }
+    ],
+  },
 };
 
 interface PageProps {
@@ -206,95 +227,4 @@ export default async function GuiaDetailPage({ params }: PageProps) {
             className="flex items-center gap-3 bg-bg-card border border-border rounded-xl p-4 hover:border-accent/50 hover:bg-bg-elevated transition-colors group"
           >
             <div className="w-10 h-10 rounded-lg bg-[#FF0000]/15 flex items-center justify-center group-hover:bg-[#FF0000]/25">
-              <Headphones className="w-5 h-5 text-[#FF0000]" />
-            </div>
-            <div className="flex-1 min-w-0">
-              <p className="text-text-primary text-sm font-medium">Escuchar {video.label}</p>
-              <p className="text-text-secondary text-xs">Audio Biblia Dramatizada</p>
-            </div>
-            <ExternalLink className="w-4 h-4 text-text-secondary group-hover:text-accent flex-shrink-0" />
-          </a>
-        ))}
-      </div>
-
-      {/* Key Topics */}
-      <div className="bg-bg-card border border-border rounded-xl p-5 md:p-6 mb-4">
-        <div className="flex items-center gap-2 mb-4">
-          <BookOpen className="w-5 h-5 text-accent" />
-          <h2 className="font-[family-name:var(--font-heading)] text-lg font-bold">
-            Temas Principales
-          </h2>
-        </div>
-        <ul className="space-y-2">
-          {guia.temas_clave.map((tema, i) => (
-            <li key={i} className="flex items-start gap-2 text-text-secondary text-sm">
-              <span className="text-accent font-bold mt-0.5">•</span>
-              {tema}
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* Key Verses */}
-      <div className="bg-bg-card border border-border rounded-xl p-5 md:p-6 mb-4">
-        <h3 className="text-xs font-semibold text-accent-gold uppercase tracking-wider mb-3">
-          Versículos Clave
-        </h3>
-        <div className="flex flex-wrap gap-2">
-          {guia.versiculos_clave.map((v, i) => (
-            <span key={i} className="bg-primary/20 border border-border-accent/30 px-2.5 py-1 rounded-full text-xs text-accent">
-              {v}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      {/* Discussion Questions */}
-      <div className="bg-bg-card border border-border rounded-xl p-5 md:p-6">
-        <div className="flex items-center gap-2 mb-4">
-          <MessageCircle className="w-5 h-5 text-accent" />
-          <h2 className="font-[family-name:var(--font-heading)] text-lg font-bold">
-            Preguntas Prácticas
-          </h2>
-        </div>
-        <p className="text-text-secondary text-xs mb-4">
-          Tres preguntas de aplicación práctica para tu día a día
-        </p>
-        <div className="space-y-3">
-          {guia.preguntas_destacadas.map((pregunta, i) => (
-            <div key={i} className="bg-bg-elevated border border-border rounded-lg p-3">
-              <div className="flex items-start gap-2">
-                <span className="text-accent font-bold text-sm mt-0.5">{i + 1}.</span>
-                <p className="text-text-primary text-sm">{pregunta}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Navigation */}
-      <div className="flex justify-between mt-6 pt-4 border-t border-border">
-        {guia.semana_numero > 1 ? (
-          <Link
-            href={`/guias/lucas-${guia.semana_numero - 1}`}
-            className="text-text-secondary hover:text-accent text-sm transition-colors"
-          >
-            ← Semana {guia.semana_numero - 1}
-          </Link>
-        ) : (
-          <div />
-        )}
-        {guia.semana_numero < 6 ? (
-          <Link
-            href={`/guias/lucas-${guia.semana_numero + 1}`}
-            className="text-text-secondary hover:text-accent text-sm transition-colors"
-          >
-            Semana {guia.semana_numero + 1} →
-          </Link>
-        ) : (
-          <div />
-        )}
-      </div>
-    </div>
-  );
-}
+              <Headphones className="w-5 h-5 text-[#FF000
