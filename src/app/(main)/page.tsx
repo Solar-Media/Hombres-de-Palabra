@@ -66,7 +66,7 @@ export default function HomePage() {
           {/* Logo */}
           <div className="flex justify-center mb-6">
             <Image
-              src="/Logo-Hombres.jpeg"
+              src="/placagrande-hombres.png"
               alt="Hombres de Palabra"
               width={1376}
               height={768}
@@ -88,7 +88,7 @@ export default function HomePage() {
             Shadow Mountain en Español
           </p>
           <p className="text-text-secondary text-xs mt-1">
-            Pastor Erick Zaldaña &bull; Líder: Carlos García
+            Pastor Erick Zaldaña &bull; Líder - Carlos García
           </p>
         </div>
       </section>
