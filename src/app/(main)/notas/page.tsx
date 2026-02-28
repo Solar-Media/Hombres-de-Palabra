@@ -1,31 +1,85 @@
-import { FileText, User, BookMarked } from "lucide-react";
+import { FileText, User, BookMarked, Film } from "lucide-react";
 
-const notasDemo = [
+const notasData = [
   {
     id: "1",
-    titulo: "La Fe que Transforma",
-    orador: "Pastor Erick Zaldaña",
-    fecha: "2026-03-01",
-    versiculos_clave: ["Hebreos 11:1-6", "Santiago 2:17"],
-    puntos_principales: [
-      "La fe es certeza, no suposición",
-      "La fe sin obras es muerta",
-      "La fe viene por el oír la Palabra de Dios",
+    titulo: "Sé Buena Tierra",
+    orador: "Vicente Martínez",
+    fecha: "2026-02-24",
+    serie: "Semana 6 – Estudio de Lucas",
+    texto_base: "Lucas 8:4-15",
+    tema_central: "Sé Buena Tierra",
+    pelicula: "Karate Kid (1984) — Ilustra disciplina, carácter, perseverancia y formación interior.",
+    secciones: [
+      {
+        titulo: "1. ¿Qué es una Parábola?",
+        contenido: "Las parábolas son historias que Jesús utilizaba para revelar verdades espirituales profundas, especialmente sobre el Reino de Dios.",
+        puntos: [
+          "Narraciones breves",
+          "Comparaciones entre una historia ficticia y una verdad real",
+          "Enseñanzas que usan metáforas y símiles",
+          "Diseñadas para revelar una verdad importante",
+        ],
+      },
+      {
+        titulo: "2. Propósito de las Parábolas",
+        contenido: "Jesús explica que las parábolas revelan la verdad a quienes tienen un corazón dispuesto, pero permanecen ocultas para quienes endurecen su corazón.",
+        versiculos: ["Mateo 13:10-16", "Isaías 6:9-10"],
+        puntos: [
+          "Profecía sobre un pueblo que oye pero no entiende, ve pero no percibe",
+          "Las parábolas examinan el corazón",
+        ],
+      },
+      {
+        titulo: "3. Parábola del Sembrador – Lucas 8:4-15",
+        contenido: '"El que tiene oídos para oír, oiga." — Lucas 8:8',
+        puntos: [
+          "La pregunta no es si escuchamos…",
+          "La pregunta es cómo escuchamos.",
+        ],
+      },
+      {
+        titulo: "4. Significado de la Parábola",
+        contenido: "La Semilla es la Palabra de Dios, el mensaje de salvación. Los cuatro tipos de terreno representan diferentes tipos de corazones:",
+        puntos: [
+          "🚶 Junto al Camino — Escuchan superficialmente. No le dan importancia al mensaje. El enemigo arrebata la Palabra. Representa la obra del diablo que no quiere que sean salvos.",
+          "🪨 Sobre la Roca — Reciben el mensaje con gozo. No permiten que eche raíces. No hay profundidad. No crecen espiritualmente. Abandonan cuando llegan pruebas.",
+          "🌿 Entre Espinos — Escuchan el mensaje. Pero las preocupaciones, riquezas y placeres lo ahogan. Dios no ocupa el trono de su corazón. Las distracciones impiden el fruto.",
+          "🌾 Buena Tierra — Reciben la Palabra con corazón abierto. Permiten que Dios reine en sus vidas. Tienen un corazón recto. Aman y obedecen a Dios. Perseveran. Dan fruto.",
+        ],
+      },
+      {
+        titulo: "5. ¿Qué es el Fruto?",
+        contenido: "El fruto es la evidencia visible de una vida transformada por Jesús. Una persona transformada:",
+        puntos: [
+          "Vive para la gloria de Dios",
+          "Persevera",
+          "Comparte la Palabra",
+          "Impacta a otros",
+        ],
+      },
+      {
+        titulo: "6. Preguntas de Reflexión",
+        contenido: null,
+        puntos: [
+          "¿Estoy permitiendo que Dios reine en todas las áreas de mi vida?",
+          "¿Vivo para Él y tomo tiempo para escuchar Su voz?",
+          "¿Estoy sembrando y dando fruto para la gloria de Dios?",
+        ],
+      },
+      {
+        titulo: "7. Aplicación: ¿Cómo ser Buena Tierra?",
+        contenido: "Se requiere: Carácter, Valentía, Disciplina, Obediencia, El carácter de Cristo.",
+        puntos: [
+          "Quién eres cuando nadie te ve",
+          "La motivación interna de hacer lo correcto en todo tiempo",
+          "Vivir conforme a la Palabra de Dios",
+          "Reflejar la imagen de Dios",
+          "Evidenciar la obra del Espíritu Santo en tu vida",
+        ],
+      },
     ],
-    contenido: "La fe bíblica no es un sentimiento pasajero ni una simple creencia intelectual. Es una convicción profunda que se ancla en el carácter inmutable de Dios. Cuando Hebreos 11:1 dice que la fe es la 'certeza de lo que se espera', nos habla de una confianza firme basada en las promesas de Dios.",
-  },
-  {
-    id: "2",
-    titulo: "El Poder del Amor Ágape",
-    orador: "Pastor Erick Zaldaña",
-    fecha: "2026-03-08",
-    versiculos_clave: ["1 Corintios 13:4-7", "Juan 3:16"],
-    puntos_principales: [
-      "El amor ágape es un amor de decisión, no de emoción",
-      "Dios demostró Su amor en la cruz",
-      "Estamos llamados a amar como Cristo nos amó",
-    ],
-    contenido: "El amor que Dios nos llama a vivir no es un amor romántico ni sentimental. Es el amor ágape — un amor sacrificial que decide amar incluso cuando no es fácil. Este es el amor que Dios demostró al enviar a Su Hijo.",
+    resumen: "La condición del corazón determina el fruto de la vida. La semilla es perfecta. El sembrador es fiel. La diferencia está en el terreno. La pregunta no es: ¿Recibo la Palabra? La pregunta es: ¿Soy buena tierra?",
   },
 ];
 
@@ -49,62 +103,102 @@ export default function NotasPage() {
         </div>
       </div>
 
-      {/* Notes List */}
-      <div className="space-y-4">
-        {notasDemo.map((nota) => (
+      {/* Notes */}
+      <div className="space-y-6">
+        {notasData.map((nota) => (
           <div
             key={nota.id}
-            className="bg-bg-card border border-border rounded-xl p-5 transition-all hover:border-border-accent/50"
+            className="bg-bg-card border border-border rounded-xl overflow-hidden"
           >
             {/* Header */}
-            <div className="flex items-center gap-2 mb-1">
-              <span className="text-text-secondary text-xs">
-                {new Date(nota.fecha).toLocaleDateString("es-MX", {
-                  day: "numeric",
-                  month: "long",
-                  year: "numeric",
-                })}
-              </span>
-            </div>
-            <h2 className="font-[family-name:var(--font-heading)] font-bold text-base mb-1">
-              {nota.titulo}
-            </h2>
-            <div className="flex items-center gap-1.5 text-text-secondary text-xs mb-3">
-              <User className="w-3 h-3" />
-              {nota.orador}
-            </div>
-
-            {/* Content Preview */}
-            <p className="text-text-secondary text-sm mb-4 line-clamp-3">
-              {nota.contenido}
-            </p>
-
-            {/* Key Verses */}
-            <div className="flex flex-wrap gap-2 mb-3">
-              {nota.versiculos_clave.map((v, i) => (
-                <span
-                  key={i}
-                  className="inline-flex items-center gap-1 bg-primary/20 border border-border-accent/30 px-2 py-0.5 rounded-full text-[11px] text-accent"
-                >
-                  <BookMarked className="w-3 h-3" />
-                  {v}
+            <div className="bg-gradient-to-r from-primary/20 to-bg-card border-b border-border p-5">
+              <div className="flex items-center gap-2 mb-1 flex-wrap">
+                <span className="text-accent font-[family-name:var(--font-display)] text-xs font-semibold uppercase">
+                  {nota.serie}
                 </span>
-              ))}
+                <span className="text-border text-xs">&bull;</span>
+                <span className="text-text-secondary text-xs">
+                  {new Date(nota.fecha).toLocaleDateString("es-MX", {
+                    weekday: "long",
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric",
+                  })}
+                </span>
+              </div>
+              <h2 className="font-[family-name:var(--font-heading)] font-bold text-xl mb-1">
+                {nota.titulo}
+              </h2>
+              <div className="flex items-center gap-1.5 text-text-secondary text-sm">
+                <User className="w-3.5 h-3.5" />
+                {nota.orador}
+              </div>
+
+              {/* Texto base */}
+              <div className="mt-3 flex flex-wrap gap-2">
+                <span className="inline-flex items-center gap-1 bg-primary/20 border border-border-accent/30 px-2.5 py-1 rounded-full text-xs text-accent">
+                  <BookMarked className="w-3 h-3" />
+                  {nota.texto_base}
+                </span>
+              </div>
+
+              {/* Movie recommendation */}
+              {nota.pelicula && (
+                <div className="mt-3 flex items-start gap-2 bg-bg-elevated/50 rounded-lg p-2.5">
+                  <Film className="w-4 h-4 text-accent-gold flex-shrink-0 mt-0.5" />
+                  <p className="text-text-secondary text-xs">
+                    <span className="text-accent-gold font-medium">🎬 Película recomendada:</span>{" "}
+                    {nota.pelicula}
+                  </p>
+                </div>
+              )}
             </div>
 
-            {/* Main Points */}
-            <div className="bg-bg-elevated rounded-lg p-3">
-              <h3 className="text-[10px] font-semibold text-accent-gold uppercase tracking-wider mb-2">
-                Puntos Principales
-              </h3>
-              <ul className="space-y-1">
-                {nota.puntos_principales.map((punto, i) => (
-                  <li key={i} className="text-text-secondary text-xs flex items-start gap-2">
-                    <span className="text-accent font-bold">{i + 1}.</span>
-                    {punto}
-                  </li>
-                ))}
-              </ul>
+            {/* Content Sections */}
+            <div className="p-5 space-y-5">
+              {nota.secciones.map((seccion, i) => (
+                <div key={i}>
+                  <h3 className="font-[family-name:var(--font-heading)] text-sm font-bold text-accent mb-2">
+                    {seccion.titulo}
+                  </h3>
+                  {seccion.contenido && (
+                    <p className="text-text-secondary text-sm mb-2 leading-relaxed">
+                      {seccion.contenido}
+                    </p>
+                  )}
+                  {seccion.versiculos && (
+                    <div className="flex flex-wrap gap-1.5 mb-2">
+                      {seccion.versiculos.map((v, j) => (
+                        <span key={j} className="bg-primary/15 border border-border-accent/20 px-2 py-0.5 rounded-full text-[11px] text-accent">
+                          📖 {v}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                  {seccion.puntos && (
+                    <ul className="space-y-1.5">
+                      {seccion.puntos.map((punto, j) => (
+                        <li key={j} className="flex items-start gap-2 text-text-secondary text-sm">
+                          <span className="text-accent mt-1 text-xs">•</span>
+                          <span className="leading-relaxed">{punto}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ))}
+
+              {/* Resumen Final */}
+              {nota.resumen && (
+                <div className="bg-gradient-to-r from-primary/10 to-bg-elevated border border-border-accent/20 rounded-xl p-4 mt-4">
+                  <h3 className="font-[family-name:var(--font-heading)] text-sm font-bold text-accent-gold mb-2">
+                    Resumen Final
+                  </h3>
+                  <p className="text-text-primary text-sm italic leading-relaxed">
+                    {nota.resumen}
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         ))}
