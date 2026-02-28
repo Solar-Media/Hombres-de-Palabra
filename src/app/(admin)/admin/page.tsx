@@ -11,14 +11,18 @@ import {
   Shield,
   ArrowLeft,
   Lock,
+  Plus,
+  Edit,
+  Trash2
 } from "lucide-react";
 
+// Actualizamos las secciones para incluir la ruta base y descripciones más generales
 const adminSections = [
-  { href: "/admin/guias/nueva", icon: BookOpen, label: "Nueva Guía de Estudio", desc: "Crear guía semanal con referencias del libro" },
-  { href: "/admin/notas/nueva", icon: FileText, label: "Nuevas Notas de Sermón", desc: "Agregar notas de la sesión de estudio" },
-  { href: "/admin/eventos/nuevo", icon: Calendar, label: "Nuevo Evento", desc: "Crear evento o actividad" },
-  { href: "/admin/anuncios/nuevo", icon: Megaphone, label: "Nuevo Anuncio", desc: "Publicar un anuncio" },
-  { href: "/admin/devocional/nuevo", icon: Sun, label: "Nuevo Devocional", desc: "Agregar devocional, versículo y tip del día" },
+  { basePath: "/admin/guias", newHref: "/admin/guias/nueva", icon: BookOpen, label: "Guías de Estudio", desc: "Gestionar guías semanales" },
+  { basePath: "/admin/notas", newHref: "/admin/notas/nueva", icon: FileText, label: "Notas de Sermón", desc: "Gestionar notas de la sesión" },
+  { basePath: "/admin/eventos", newHref: "/admin/eventos/nuevo", icon: Calendar, label: "Eventos", desc: "Gestionar eventos y actividades" },
+  { basePath: "/admin/anuncios", newHref: "/admin/anuncios/nuevo", icon: Megaphone, label: "Anuncios", desc: "Gestionar publicaciones y avisos" },
+  { basePath: "/admin/devocional", newHref: "/admin/devocional/nuevo", icon: Sun, label: "Devocionales", desc: "Gestionar devocionales diarios" },
 ];
 
 const ADMIN_PASSWORD = "HombresdePalabra";
@@ -120,25 +124,54 @@ export default function AdminPage() {
         </div>
 
         {/* Admin Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
           {adminSections.map((section) => {
             const Icon = section.icon;
             return (
-              <Link
-                key={section.href}
-                href={section.href}
-                className="group bg-bg-card border border-border rounded-xl p-5 transition-all hover:border-border-accent hover:bg-bg-elevated hover:scale-[1.02]"
+              <div
+                key={section.basePath}
+                className="flex flex-col bg-bg-card border border-border rounded-xl p-5 transition-all hover:border-border-accent hover:bg-bg-elevated"
               >
                 <div className="flex items-center gap-3 mb-2">
-                  <div className="w-9 h-9 rounded-lg bg-primary/20 flex items-center justify-center group-hover:bg-primary/30">
-                    <Icon className="w-4.5 h-4.5 text-accent" />
+                  <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center">
+                    <Icon className="w-5 h-5 text-accent" />
                   </div>
-                  <h2 className="font-[family-name:var(--font-heading)] font-semibold text-sm">
+                  <h2 className="font-[family-name:var(--font-heading)] font-semibold text-base text-text-primary">
                     {section.label}
                   </h2>
                 </div>
-                <p className="text-text-secondary text-xs">{section.desc}</p>
-              </Link>
+                <p className="text-text-secondary text-sm mb-5 flex-grow">
+                  {section.desc}
+                </p>
+                
+                {/* Botones de Acción */}
+                <div className="flex items-center gap-2 pt-4 border-t border-border/50">
+                  <Link
+                    href={section.newHref}
+                    className="flex-1 flex items-center justify-center gap-1.5 bg-primary hover:bg-primary-light text-white py-2 px-2 rounded-lg text-xs font-medium transition-colors"
+                    title="Crear nuevo"
+                  >
+                    <Plus className="w-4 h-4" />
+                    Nuevo
+                  </Link>
+                  <Link
+                    href={section.basePath}
+                    className="flex-1 flex items-center justify-center gap-1.5 bg-bg-elevated hover:bg-border border border-border text-text-primary py-2 px-2 rounded-lg text-xs font-medium transition-colors"
+                    title="Editar existentes"
+                  >
+                    <Edit className="w-4 h-4" />
+                    Editar
+                  </Link>
+                  <Link
+                    href={section.basePath}
+                    className="flex-1 flex items-center justify-center gap-1.5 bg-error/10 hover:bg-error/20 border border-error/20 text-error py-2 px-2 rounded-lg text-xs font-medium transition-colors"
+                    title="Eliminar existentes"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                    Borrar
+                  </Link>
+                </div>
+              </div>
             );
           })}
         </div>
