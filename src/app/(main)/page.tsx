@@ -68,8 +68,8 @@ export default function HomePage() {
             <Image
               src="/imagen-principal.jpeg"
               alt="Hombres de Palabra"
-              width={500}
-              height={250}
+              width={1376}
+              height={768}
               className="w-auto h-32 md:h-44 drop-shadow-[0_0_15px_rgba(139,0,0,0.3)]"
               priority
             />
