@@ -66,7 +66,7 @@ export default function HomePage() {
           {/* Logo */}
           <div className="flex justify-center mb-6">
             <Image
-              src="/logo-hombres.jpeg"
+              src="/Logo-Hombres.jpeg"
               alt="Hombres de Palabra"
               width={1376}
               height={768}
