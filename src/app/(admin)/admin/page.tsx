@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import {
   BookOpen,
@@ -5,11 +8,9 @@ import {
   Calendar,
   Megaphone,
   Sun,
-  Heart,
-  Wrench,
-  MessageCircle,
   Shield,
   ArrowLeft,
+  Lock,
 } from "lucide-react";
 
 const adminSections = [
@@ -20,7 +21,77 @@ const adminSections = [
   { href: "/admin/devocional/nuevo", icon: Sun, label: "Nuevo Devocional", desc: "Agregar devocional, versículo y tip del día" },
 ];
 
+const ADMIN_PASSWORD = "HombresdePalabra";
+
 export default function AdminPage() {
+  const [authenticated, setAuthenticated] = useState(false);
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (password === ADMIN_PASSWORD) {
+      setAuthenticated(true);
+      setError(false);
+    } else {
+      setError(true);
+    }
+  };
+
+  if (!authenticated) {
+    return (
+      <div className="min-h-screen bg-bg-primary flex items-center justify-center px-4">
+        <div className="w-full max-w-sm">
+          <div className="text-center mb-8">
+            <div className="w-16 h-16 rounded-xl bg-primary/20 flex items-center justify-center mx-auto mb-4">
+              <Lock className="w-8 h-8 text-accent" />
+            </div>
+            <h1 className="font-[family-name:var(--font-heading)] text-xl font-bold tracking-wide">
+              Panel de Administración
+            </h1>
+            <p className="text-text-secondary text-sm mt-1">
+              Ingresa la contraseña para acceder
+            </p>
+          </div>
+
+          <form onSubmit={handleLogin} className="space-y-4">
+            <div>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => { setPassword(e.target.value); setError(false); }}
+                placeholder="Contraseña"
+                className={`w-full bg-bg-card border ${error ? "border-error" : "border-border"} rounded-lg px-4 py-3 text-sm text-text-primary placeholder-text-secondary/50 focus:outline-none focus:border-accent text-center tracking-widest`}
+                autoFocus
+              />
+              {error && (
+                <p className="text-error text-xs mt-2 text-center">
+                  Contraseña incorrecta. Intenta de nuevo.
+                </p>
+              )}
+            </div>
+            <button
+              type="submit"
+              className="w-full bg-primary hover:bg-primary-light text-white py-3 rounded-lg text-sm font-medium transition-colors"
+            >
+              Acceder
+            </button>
+          </form>
+
+          <div className="mt-6 text-center">
+            <Link
+              href="/"
+              className="inline-flex items-center gap-1.5 text-text-secondary hover:text-accent text-xs transition-colors"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" />
+              Volver al Inicio
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-bg-primary">
       <div className="max-w-4xl mx-auto px-4 py-8">
