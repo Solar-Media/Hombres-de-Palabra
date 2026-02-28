@@ -1,4 +1,4 @@
-import { BookOpen, Book, ArrowLeft, MessageCircle, Download, ExternalLink } from "lucide-react";
+import { BookOpen, Book, ArrowLeft, MessageCircle, Download, ExternalLink, Headphones } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -8,6 +8,7 @@ const guiasData: Record<string, {
   descripcion: string; libro_referencia: string; paginas_referencia: string;
   temas_clave: string[]; preguntas_destacadas: string[];
   versiculos_clave: string[]; pdf_url: string; biblia_url: string;
+  audio_videos: { label: string; url: string }[];
 }> = {
   "lucas-1": {
     id: "lucas-1", semana_numero: 1, titulo: "Nada es imposible para Dios",
@@ -28,6 +29,7 @@ const guiasData: Record<string, {
     versiculos_clave: ["Lucas 1:37", "Lucas 1:67-79", "Isaías 7:14", "Isaías 9:6", "Romanos 5:12-15", "1 Pedro 1:18-19"],
     pdf_url: "/guias/lucas-semana-1.pdf",
     biblia_url: "https://www.biblegateway.com/passage/?search=Lucas+1&version=RVR1960",
+    audio_videos: [{ label: "Lucas 1", url: "https://www.youtube.com/watch?v=BjGyN54mSr0" }],
   },
   "lucas-2": {
     id: "lucas-2", semana_numero: 2, titulo: "¿Dónde está el fruto del arrepentimiento?",
@@ -48,6 +50,7 @@ const guiasData: Record<string, {
     versiculos_clave: ["Lucas 2:1-20", "Lucas 2:21-40", "Lucas 2:41-52", "Lucas 3:3-18", "Mateo 2:1-23", "Malaquías 4:6", "Lucas 1:15-17"],
     pdf_url: "/guias/lucas-semana-2.pdf",
     biblia_url: "https://www.biblegateway.com/passage/?search=Lucas+2-3&version=RVR1960",
+    audio_videos: [{ label: "Lucas 2", url: "https://www.youtube.com/watch?v=8jf9lqW1KRE" }, { label: "Lucas 3", url: "https://www.youtube.com/watch?v=WFOt0tg5JRE" }],
   },
   "lucas-3": {
     id: "lucas-3", semana_numero: 3, titulo: "Seguir a Cristo — un asunto de obediencia, no de capacidad",
@@ -68,6 +71,7 @@ const guiasData: Record<string, {
     versiculos_clave: ["Lucas 4:1-13", "Lucas 4:18-19", "Lucas 4:31-44", "Lucas 5:1-16", "Lucas 5:17-39", "Mateo 4:1-11"],
     pdf_url: "/guias/lucas-semana-3.pdf",
     biblia_url: "https://www.biblegateway.com/passage/?search=Lucas+4-5&version=RVR1960",
+    audio_videos: [{ label: "Lucas 4", url: "https://www.youtube.com/watch?v=7dGv6xFODQc" }, { label: "Lucas 5", url: "https://www.youtube.com/watch?v=3xCTDeJAZ60" }],
   },
   "lucas-4": {
     id: "lucas-4", semana_numero: 4, titulo: "El amor del que ha sido perdonado",
@@ -87,6 +91,7 @@ const guiasData: Record<string, {
     versiculos_clave: ["Lucas 6:1-11", "Lucas 6:20-49", "Lucas 6:43-45", "Lucas 7:1-35", "Lucas 7:36-50", "Mateo 5:17-19", "Éxodo 20:8-11"],
     pdf_url: "/guias/lucas-semana-4.pdf",
     biblia_url: "https://www.biblegateway.com/passage/?search=Lucas+6-7&version=RVR1960",
+    audio_videos: [{ label: "Lucas 6", url: "https://www.youtube.com/watch?v=apMiaadShg4" }, { label: "Lucas 7", url: "https://www.youtube.com/watch?v=OuLjZxiy9eU" }],
   },
   "lucas-5": {
     id: "lucas-5", semana_numero: 5, titulo: "Sin mirar atrás",
@@ -107,6 +112,7 @@ const guiasData: Record<string, {
     versiculos_clave: ["Lucas 8:1-18", "Lucas 8:22-39", "Lucas 8:40-56", "Lucas 9:1-17", "Lucas 9:18-36", "Lucas 9:57-62", "Marcos 4:13-20"],
     pdf_url: "/guias/lucas-semana-5.pdf",
     biblia_url: "https://www.biblegateway.com/passage/?search=Lucas+8-9&version=RVR1960",
+    audio_videos: [{ label: "Lucas 8", url: "https://www.youtube.com/watch?v=C7klHuqleEc" }, { label: "Lucas 9", url: "https://www.youtube.com/watch?v=V3THscX9h4o" }],
   },
   "lucas-6": {
     id: "lucas-6", semana_numero: 6, titulo: "Permanece a Sus pies",
@@ -127,6 +133,7 @@ const guiasData: Record<string, {
     versiculos_clave: ["Lucas 10:1-16", "Lucas 10:25-37", "Lucas 10:38-42", "Lucas 11:1-13", "Lucas 11:14-28", "Juan 8:31-32", "Juan 15:7"],
     pdf_url: "/guias/lucas-semana-6.pdf",
     biblia_url: "https://www.biblegateway.com/passage/?search=Lucas+10-11&version=RVR1960",
+    audio_videos: [{ label: "Lucas 10", url: "https://www.youtube.com/watch?v=AF1bY3ck8Ug" }, { label: "Lucas 11", url: "https://www.youtube.com/watch?v=_IUJvaKpcSs" }],
   },
 };
 
@@ -209,6 +216,28 @@ export default async function GuiaDetailPage({ params }: PageProps) {
           </div>
           <ExternalLink className="w-4 h-4 text-accent-gold flex-shrink-0" />
         </a>
+      </div>
+
+      {/* Audio Bible Videos */}
+      <div className={`grid grid-cols-1 ${guia.audio_videos.length > 1 ? "sm:grid-cols-2" : ""} gap-3 mb-6`}>
+        {guia.audio_videos.map((video, i) => (
+          <a
+            key={i}
+            href={video.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 bg-bg-card border border-border rounded-xl p-4 hover:border-accent/50 hover:bg-bg-elevated transition-colors group"
+          >
+            <div className="w-10 h-10 rounded-lg bg-[#FF0000]/15 flex items-center justify-center group-hover:bg-[#FF0000]/25">
+              <Headphones className="w-5 h-5 text-[#FF0000]" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-text-primary text-sm font-medium">Escuchar {video.label}</p>
+              <p className="text-text-secondary text-xs">Audio Biblia Dramatizada</p>
+            </div>
+            <ExternalLink className="w-4 h-4 text-text-secondary group-hover:text-accent flex-shrink-0" />
+          </a>
+        ))}
       </div>
 
       {/* Key Topics */}
