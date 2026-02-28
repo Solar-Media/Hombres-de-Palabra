@@ -68,9 +68,9 @@ export default function HomePage() {
             <Image
               src="/logo-full.png"
               alt="Hombres de Palabra"
-              width={400}
-              height={200}
-              className="w-auto h-20 md:h-28"
+              width={500}
+              height={250}
+              className="w-auto h-32 md:h-44 drop-shadow-[0_0_15px_rgba(139,0,0,0.3)]"
               priority
             />
           </div>
@@ -84,11 +84,11 @@ export default function HomePage() {
           </p>
 
           {/* Church info */}
-          <p className="text-text-secondary text-sm">
-            Shadow Mountain en Español Community Church
+          <p className="text-text-primary text-base font-semibold tracking-wide">
+            Shadow Mountain en Español
           </p>
           <p className="text-text-secondary text-xs mt-1">
-            Pastor Erick Zaldaña &bull; Dr. David Jeremiah
+            Pastor Erick Zaldaña &bull; Líder: Carlos García
           </p>
         </div>
       </section>

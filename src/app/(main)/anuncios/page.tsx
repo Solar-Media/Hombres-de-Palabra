@@ -1,4 +1,5 @@
-import { Megaphone } from "lucide-react";
+import Image from "next/image";
+import { Megaphone, Calendar, MapPin, Clock, DollarSign } from "lucide-react";
 
 export default function AnunciosPage() {
   return (
@@ -20,15 +21,51 @@ export default function AnunciosPage() {
         </div>
       </div>
 
-      {/* Por actualizarse */}
-      <div className="bg-bg-card border border-border border-dashed rounded-xl p-8 text-center">
-        <Megaphone className="w-10 h-10 text-text-secondary/30 mx-auto mb-3" />
-        <p className="text-text-secondary text-base font-medium">
-          Por actualizarse
-        </p>
-        <p className="text-text-secondary/60 text-xs mt-1">
-          Los anuncios del ministerio serán publicados aquí próximamente
-        </p>
+      {/* Futbol y Carne Asada Announcement */}
+      <div className="bg-bg-card border border-border rounded-xl overflow-hidden">
+        {/* Event Image */}
+        <div className="relative w-full">
+          <Image
+            src="/eventos/futbol-carne-asada.png"
+            alt="Fútbol y Carne Asada — Hombres de Palabra"
+            width={1920}
+            height={1080}
+            className="w-full h-auto"
+            priority
+          />
+        </div>
+
+        {/* Event Details */}
+        <div className="p-5">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="inline-flex items-center gap-1 bg-accent/20 text-accent px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase">
+              Evento
+            </span>
+          </div>
+
+          <h2 className="font-[family-name:var(--font-heading)] font-bold text-lg mb-3">
+            Fútbol y Carne Asada para Hombres
+          </h2>
+
+          <div className="space-y-2">
+            <div className="flex items-center gap-2.5 text-text-secondary text-sm">
+              <Calendar className="w-4 h-4 text-accent flex-shrink-0" />
+              <span>Sábado 28 de Marzo</span>
+            </div>
+            <div className="flex items-center gap-2.5 text-text-secondary text-sm">
+              <Clock className="w-4 h-4 text-accent flex-shrink-0" />
+              <span>9:00 A.M.</span>
+            </div>
+            <div className="flex items-center gap-2.5 text-text-secondary text-sm">
+              <DollarSign className="w-4 h-4 text-accent flex-shrink-0" />
+              <span>$10 dólares</span>
+            </div>
+            <div className="flex items-center gap-2.5 text-text-secondary text-sm">
+              <MapPin className="w-4 h-4 text-accent flex-shrink-0" />
+              <span>Canchas — Campus El Cajón</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
